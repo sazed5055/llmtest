@@ -59,3 +59,7 @@ Thumbs.db
 llmtest-report.json
 llmtest-report.html
 test_results.json
+
+# Local documentation
+*.local.md
+.local/
