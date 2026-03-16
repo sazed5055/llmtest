@@ -107,7 +107,7 @@ os.environ["ANTHROPIC_API_KEY"] = "your-key-here"
 from llmtest import TestRunner
 from llmtest.providers.anthropic_provider import AnthropicProvider
 
-provider = AnthropicProvider(model="claude-3-5-haiku-20241022")
+provider = AnthropicProvider(model="claude-3-5-sonnet-20241022")
 runner = TestRunner(provider)
 results = runner.run_from_file("llmtest.yaml")
 ```

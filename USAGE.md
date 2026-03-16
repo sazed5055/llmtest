@@ -179,10 +179,10 @@ reporter.report(results)
 - `gpt-3.5-turbo` - Cheaper, less capable
 
 **Anthropic:**
-- `claude-3-5-sonnet-20241022` - Most capable
-- `claude-3-5-haiku-20241022` - Fast and affordable (recommended for testing)
+- `claude-3-5-sonnet-20241022` - Most capable (recommended)
 - `claude-3-opus-20240229` - Previous generation, very capable
 - `claude-3-sonnet-20240229` - Balanced performance
+- `claude-3-haiku-20240307` - Fast and affordable
 
 ## Programmatic API
 

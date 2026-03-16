@@ -36,7 +36,7 @@ except ImportError:
 
 # Create Anthropic provider
 print("Initializing Anthropic provider...")
-provider = AnthropicProvider(model="claude-3-5-haiku-20241022")
+provider = AnthropicProvider(model="claude-3-haiku-20240307")
 
 # Create runner
 runner = TestRunner(provider)

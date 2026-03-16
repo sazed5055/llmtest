@@ -41,7 +41,7 @@ python run_test.py
 ```
 
 Demonstrates:
-- Anthropic Claude 3.5 Haiku integration
+- Anthropic Claude 3 Haiku integration
 - Knowledge base / context injection
 - Real LLM testing with grounding checks
 
