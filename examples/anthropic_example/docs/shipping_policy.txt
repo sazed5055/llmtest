@@ -1,0 +1,15 @@
+Acme Corp Shipping Policy
+
+Standard Shipping:
+- Delivery within 5-7 business days
+- Free on orders over $50
+- $5.99 flat rate for orders under $50
+
+Express Shipping:
+- Delivery within 2-3 business days
+- $15.99 flat rate
+
+We ship to all US states and territories.
+
+Orders are processed within 1-2 business days.
+You will receive a tracking number once your order ships.

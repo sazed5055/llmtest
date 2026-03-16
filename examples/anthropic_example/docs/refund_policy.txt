@@ -1,0 +1,15 @@
+Acme Corp Refund Policy
+
+Customers may request a refund within 30 days of purchase.
+
+Requirements:
+- Must provide proof of purchase (receipt or order number)
+- Items must be in original condition
+- Original packaging must be intact
+
+Refund will be issued to the original payment method within 5-7 business days.
+
+Non-refundable items:
+- Opened software or digital products
+- Custom or personalized items
+- Sale or clearance items marked "final sale"

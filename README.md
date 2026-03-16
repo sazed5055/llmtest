@@ -16,7 +16,15 @@ LLM-based applications need systematic testing for behavior that standard unit t
 
 Install:
 ```bash
-pip install -e .
+# Install with all providers
+pip install git+https://github.com/sazed5055/llmtest.git[all]
+
+# Or install specific providers
+pip install git+https://github.com/sazed5055/llmtest.git[openai]
+pip install git+https://github.com/sazed5055/llmtest.git[anthropic]
+
+# Or just the base package (mock provider only)
+pip install git+https://github.com/sazed5055/llmtest.git
 ```
 
 Create a test configuration (`llmtest.yaml`):
@@ -63,18 +71,45 @@ tests:
 ```
 
 Run tests:
+
+**With Mock Provider (no API key needed):**
 ```python
 from llmtest import TestRunner
 from llmtest.providers.mock import MockProvider
 
-provider = MockProvider()  # or OpenAIProvider(), AnthropicProvider()
+provider = MockProvider()
 runner = TestRunner(provider)
 results = runner.run_from_file("llmtest.yaml")
 
-# Print results
 from llmtest.reporting import ConsoleReporter
 reporter = ConsoleReporter()
 reporter.report(results)
+```
+
+**With OpenAI:**
+```python
+import os
+os.environ["OPENAI_API_KEY"] = "your-key-here"
+
+from llmtest import TestRunner
+from llmtest.providers.openai_provider import OpenAIProvider
+
+provider = OpenAIProvider(model="gpt-4o-mini")
+runner = TestRunner(provider)
+results = runner.run_from_file("llmtest.yaml")
+```
+
+**With Anthropic:**
+```python
+import os
+os.environ["ANTHROPIC_API_KEY"] = "your-key-here"
+
+from llmtest import TestRunner
+from llmtest.providers.anthropic_provider import AnthropicProvider
+
+provider = AnthropicProvider(model="claude-3-5-haiku-20241022")
+runner = TestRunner(provider)
+results = runner.run_from_file("llmtest.yaml")
 ```
 
 ## Example Output
@@ -114,9 +149,9 @@ Safety pass rate: 100.0%
 | Provider | Status | Notes |
 |----------|--------|-------|
 | Mock | ✅ Ready | Deterministic responses for testing |
-| OpenAI | 🚧 Phase 2 | Uses `OPENAI_API_KEY` env var |
-| Anthropic | 🚧 Phase 2 | Uses `ANTHROPIC_API_KEY` env var |
-| HTTP | 🚧 Phase 2 | Generic POST endpoint |
+| OpenAI | ✅ Ready | Uses `OPENAI_API_KEY` env var |
+| Anthropic | ✅ Ready | Uses `ANTHROPIC_API_KEY` env var |
+| HTTP | 🚧 Phase 3 | Generic POST endpoint |
 
 ## Supported Test Types
 
@@ -272,17 +307,17 @@ Do NOT rely on `llmtest` for:
 - ✅ Grounding/injection/safety evaluators
 - ✅ Basic runner and reporting
 
-**Phase 2** (CLI & Real Providers)
-- 🚧 OpenAI provider
-- 🚧 Anthropic provider
-- 🚧 HTTP provider
-- 🚧 Full CLI implementation
-- 🚧 JSON/HTML reporting
+**Phase 2** (Real Providers - COMPLETE)
+- ✅ OpenAI provider
+- ✅ Anthropic provider
+- ✅ Context/knowledge base injection
+- ✅ Working examples for both providers
 
-**Phase 3** (Examples & Testing)
-- 📋 Example projects
-- 📋 Unit test suite
-- 📋 Documentation polish
+**Phase 3** (CLI & Polish)
+- 🚧 Full CLI implementation (`llmtest run`, `llmtest compare`)
+- 🚧 HTTP provider
+- 🚧 Unit test suite
+- 🚧 HTML reporting
 
 **Future Considerations** (not committed)
 - Parallel test execution
