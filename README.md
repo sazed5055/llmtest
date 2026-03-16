@@ -17,14 +17,14 @@ LLM-based applications need systematic testing for behavior that standard unit t
 Install:
 ```bash
 # Install with all providers
-pip install git+https://github.com/sazed5055/llmtest.git[all]
+pip install 'git+https://github.com/sazed5055/llmtest.git#egg=llmtest[all]'
 
-# Or install specific providers
-pip install git+https://github.com/sazed5055/llmtest.git[openai]
-pip install git+https://github.com/sazed5055/llmtest.git[anthropic]
+# Install specific providers
+pip install 'git+https://github.com/sazed5055/llmtest.git#egg=llmtest[openai]'
+pip install 'git+https://github.com/sazed5055/llmtest.git#egg=llmtest[anthropic]'
 
-# Or just the base package (mock provider only)
-pip install git+https://github.com/sazed5055/llmtest.git
+# Install base package only (mock provider)
+pip install 'git+https://github.com/sazed5055/llmtest.git#egg=llmtest'
 ```
 
 Create a test configuration (`llmtest.yaml`):

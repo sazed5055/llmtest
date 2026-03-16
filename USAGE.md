@@ -6,14 +6,14 @@
 
 ```bash
 # Install with all providers (OpenAI + Anthropic)
-pip install git+https://github.com/sazed5055/llmtest.git[all]
+pip install 'git+https://github.com/sazed5055/llmtest.git#egg=llmtest[all]'
 
-# Or install specific provider
-pip install git+https://github.com/sazed5055/llmtest.git[openai]
-pip install git+https://github.com/sazed5055/llmtest.git[anthropic]
+# Install specific providers
+pip install 'git+https://github.com/sazed5055/llmtest.git#egg=llmtest[openai]'
+pip install 'git+https://github.com/sazed5055/llmtest.git#egg=llmtest[anthropic]'
 
-# Or just base package (mock provider only)
-pip install git+https://github.com/sazed5055/llmtest.git
+# Install base package only (mock provider)
+pip install 'git+https://github.com/sazed5055/llmtest.git#egg=llmtest'
 ```
 
 ### From source (development)
