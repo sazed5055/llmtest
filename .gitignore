@@ -58,3 +58,4 @@ Thumbs.db
 # llmtest specific
 llmtest-report.json
 llmtest-report.html
+test_results.json
