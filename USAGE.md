@@ -241,10 +241,88 @@ reporter = ComparisonReporter()
 reporter.report(comparisons)
 ```
 
-## Current Limitations
+## CLI Commands
 
-- Phase 2 complete: Mock, OpenAI, and Anthropic providers available
-- Phase 3 (coming): Full CLI commands (`llmtest run`, `llmtest compare`), HTTP provider
+### Run Tests
+
+```bash
+# Basic usage
+llmtest run llmtest.yaml
+
+# Save JSON output
+llmtest run llmtest.yaml --output results.json
+
+# Generate HTML report
+llmtest run llmtest.yaml --html report.html
+
+# Quiet mode (no console output)
+llmtest run llmtest.yaml --quiet --output results.json
+
+# Combine outputs
+llmtest run llmtest.yaml --output results.json --html report.html
+```
+
+### Compare Configurations
+
+```bash
+# Compare baseline vs candidate
+llmtest compare baseline.yaml candidate.yaml
+
+# Save comparison to JSON
+llmtest compare baseline.yaml candidate.yaml --output comparison.json
+```
+
+### Initialize Project
+
+```bash
+# Create example project in current directory
+llmtest init
+
+# Create example project in specific directory
+llmtest init my-project
+```
+
+## HTTP Provider
+
+For custom API endpoints:
+
+```yaml
+provider: http
+model: my-custom-model
+
+http_config:
+  url: http://localhost:8000/generate
+  request_fields:
+    system: system_prompt
+    user: user_input
+    model: model_name
+  response_field: response.text
+  headers:
+    Authorization: "Bearer ${API_TOKEN}"
+    Content-Type: "application/json"
+  timeout: 30
+
+agent:
+  type: prompt
+  system_prompt: "You are a helpful assistant."
+
+tests:
+  - id: test-1
+    type: grounding
+    input: "Test input"
+    must_include: ["expected"]
+```
+
+**Configuration options:**
+
+- `url`: API endpoint URL
+- `request_fields`: Mapping of standard fields to your API's field names
+  - `system`: Field name for system prompt
+  - `user`: Field name for user input
+  - `model`: Field name for model identifier
+- `response_field`: Dot-notation path to response text (e.g., `response.text` or `output.message`)
+- `headers`: Optional HTTP headers (environment variables like `${VAR}` are expanded)
+- `timeout`: Request timeout in seconds (default: 30)
 
 ## Examples
 

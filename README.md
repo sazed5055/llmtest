@@ -151,7 +151,7 @@ Safety pass rate: 100.0%
 | Mock | ✅ Ready | Deterministic responses for testing |
 | OpenAI | ✅ Ready | Uses `OPENAI_API_KEY` env var |
 | Anthropic | ✅ Ready | Uses `ANTHROPIC_API_KEY` env var |
-| HTTP | 🚧 Phase 3 | Generic POST endpoint |
+| HTTP | ✅ Ready | Generic POST endpoint for custom APIs |
 
 ## Supported Test Types
 
@@ -267,18 +267,62 @@ results = runner.run(config)
 print(f"Pass rate: {results.pass_rate:.1f}%")
 ```
 
-## CLI (Phase 2)
+## CLI
 
 ```bash
 # Run tests from YAML
 llmtest run llmtest.yaml
 
+# Save results to JSON
+llmtest run llmtest.yaml --output results.json
+
+# Generate HTML report
+llmtest run llmtest.yaml --html report.html
+
 # Compare baseline vs candidate
 llmtest compare baseline.yaml candidate.yaml
 
+# Save comparison to JSON
+llmtest compare baseline.yaml candidate.yaml --output comparison.json
+
 # Initialize example project
 llmtest init
+
+# Quiet mode (suppress console output)
+llmtest run llmtest.yaml --quiet --output results.json
 ```
+
+### HTTP Provider
+
+For custom API endpoints:
+
+```yaml
+provider: http
+model: my-custom-model
+
+http_config:
+  url: http://localhost:8000/generate
+  request_fields:
+    system: system_prompt
+    user: user_message
+    model: model
+  response_field: response.text
+  headers:
+    Authorization: "Bearer ${API_TOKEN}"
+  timeout: 30
+
+agent:
+  type: prompt
+  system_prompt: "You are helpful."
+
+tests:
+  - id: custom-test
+    type: grounding
+    input: "Test input"
+    must_include: ["test"]
+```
+
+Environment variables in headers (`${VAR_NAME}`) are automatically expanded.
 
 ## Important Limitations
 
@@ -313,11 +357,13 @@ Do NOT rely on `llmtest` for:
 - ✅ Context/knowledge base injection
 - ✅ Working examples for both providers
 
-**Phase 3** (CLI & Polish)
-- 🚧 Full CLI implementation (`llmtest run`, `llmtest compare`)
-- 🚧 HTTP provider
-- 🚧 Unit test suite
-- 🚧 HTML reporting
+**Phase 3** (CLI & Polish - COMPLETE)
+- ✅ Full CLI implementation (`llmtest run`, `llmtest compare`, `llmtest init`)
+- ✅ HTTP provider with configurable endpoints
+- ✅ Unit test suite with pytest (44 tests)
+- ✅ HTML reporting with styled output
+- ✅ JSON output format
+- ✅ Quiet mode for CI/CD
 
 **Future Considerations** (not committed)
 - Parallel test execution

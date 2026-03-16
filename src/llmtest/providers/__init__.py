@@ -14,10 +14,16 @@ try:
 except ImportError:
     AnthropicProvider = None  # type: ignore
 
+try:
+    from llmtest.providers.http_provider import HTTPProvider
+except ImportError:
+    HTTPProvider = None  # type: ignore
+
 __all__ = [
     "BaseProvider",
     "ProviderError",
     "MockProvider",
     "OpenAIProvider",
     "AnthropicProvider",
+    "HTTPProvider",
 ]
