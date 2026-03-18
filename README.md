@@ -1,5 +1,10 @@
 # llmtest
 
+![GitHub stars](https://img.shields.io/github/stars/sazed5055/llmtest?style=social)
+![License](https://img.shields.io/badge/license-MIT-green)
+![Python](https://img.shields.io/badge/python-3.9%2B-blue)
+![Version](https://img.shields.io/badge/version-0.1.1-blue)
+
 Test LLM apps for hallucination-like grounding failures, prompt injection, safety failures, and regressions.
 
 ## Why This Exists
