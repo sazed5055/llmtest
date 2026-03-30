@@ -1,14 +1,13 @@
 [build-system]
-requires = ["setuptools>=68.0", "wheel"]
+requires = ["setuptools<69", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "llmtest"
-version = "0.1.1"
+name = "llmtest-framework"
+version = "0.1.0"
 description = "pytest for LLM apps - test for grounding failures, prompt injection, safety, and regressions"
 readme = "README.md"
 requires-python = ">=3.9"
-license = "MIT"
 authors = [
     { name = "Sazed Monsur", email = "sazed.monsur@gmail.com" }
 ]

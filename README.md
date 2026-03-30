@@ -3,7 +3,7 @@
 ![GitHub stars](https://img.shields.io/github/stars/sazed5055/llmtest?style=social)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Python](https://img.shields.io/badge/python-3.9%2B-blue)
-![Version](https://img.shields.io/badge/version-0.1.1-blue)
+![Version](https://img.shields.io/badge/version-0.1.0-blue)
 
 Test LLM apps for hallucination-like grounding failures, prompt injection, safety failures, and regressions.
 
@@ -22,14 +22,14 @@ LLM-based applications need systematic testing for behavior that standard unit t
 Install:
 ```bash
 # Install with all providers
-pip install 'git+https://github.com/sazed5055/llmtest.git#egg=llmtest[all]'
+pip install 'llmtest-framework[all]'
 
 # Install specific providers
-pip install 'git+https://github.com/sazed5055/llmtest.git#egg=llmtest[openai]'
-pip install 'git+https://github.com/sazed5055/llmtest.git#egg=llmtest[anthropic]'
+pip install 'llmtest-framework[openai]'
+pip install 'llmtest-framework[anthropic]'
 
 # Install base package only (mock provider)
-pip install 'git+https://github.com/sazed5055/llmtest.git#egg=llmtest'
+pip install llmtest-framework
 ```
 
 Create a test configuration (`llmtest.yaml`):
