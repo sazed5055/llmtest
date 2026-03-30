@@ -1,9 +1,12 @@
 # llmtest
 
 ![GitHub stars](https://img.shields.io/github/stars/sazed5055/llmtest?style=social)
+![PyPI](https://img.shields.io/pypi/v/llmtest-framework)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Python](https://img.shields.io/badge/python-3.9%2B-blue)
-![Version](https://img.shields.io/badge/version-0.1.0-blue)
+
+**Install:** `pip install llmtest-framework`
+**PyPI:** https://pypi.org/project/llmtest-framework/
 
 Test LLM apps for hallucination-like grounding failures, prompt injection, safety failures, and regressions.
 
